@@ -5,6 +5,7 @@ import cn.qut.graduation.pojo.Student;
 import cn.qut.graduation.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,5 +17,15 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> getAllStudents() {
         return studentDao.findAll();
+    }
+
+    @Transactional
+    @Override
+    public Student getStuByIdAndPwd(Integer id) {
+        Student one = this.studentDao.getOne(id);
+        one.setPwd(studentDao.queryPwdById(id));
+        System.out.println(one.toString());
+
+        return one;
     }
 }

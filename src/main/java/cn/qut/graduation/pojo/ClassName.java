@@ -1,10 +1,11 @@
 package cn.qut.graduation.pojo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "classname")
-public class ClassName {
+public class ClassName implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;

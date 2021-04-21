@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 9088
 
 spring:
   datasource:
@@ -11,3 +11,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML
+  mvc:
+    static-path-pattern: classpath:/static/*

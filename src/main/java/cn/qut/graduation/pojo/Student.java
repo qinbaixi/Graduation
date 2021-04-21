@@ -1,10 +1,14 @@
 package cn.qut.graduation.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "student")
-public class Student {
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+public class Student implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
@@ -25,6 +29,14 @@ public class Student {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public Integer getSid() {

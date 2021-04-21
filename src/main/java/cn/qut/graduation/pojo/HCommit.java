@@ -3,10 +3,11 @@ package cn.qut.graduation.pojo;
 import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "hcommit")
-public class HCommit {
+public class HCommit implements Serializable {
     @EmbeddedId
     private IdExtension id;
 
