@@ -17,5 +17,3 @@ spring:
     suffix: .html
     encoding: UTF-8
     mode: HTML
-  mvc:
-    static-path-pattern: classpath:/static/*

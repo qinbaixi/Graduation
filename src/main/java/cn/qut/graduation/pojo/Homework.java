@@ -22,7 +22,6 @@ public class Homework implements Serializable {
     @Column(name = "delinetime", nullable =false )
     private Date delineTime;
 
-
     public Integer getId() {
         return id;
     }

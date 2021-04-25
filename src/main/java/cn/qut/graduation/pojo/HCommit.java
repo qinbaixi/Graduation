@@ -17,7 +17,16 @@ public class HCommit implements Serializable {
     private Integer score;
     @Column(name = "branch")
     private String branch;
+    @Column(name = "radress")
+    private String radress;
 
+    public String getRadress() {
+        return radress;
+    }
+
+    public void setRadress(String radress) {
+        this.radress = radress;
+    }
 
     public IdExtension getId() {
         return id;
@@ -58,6 +67,7 @@ public class HCommit implements Serializable {
                 ", title='" + title + '\'' +
                 ", score=" + score +
                 ", branch='" + branch + '\'' +
+                ", radress='" + radress + '\'' +
                 '}';
     }
 }

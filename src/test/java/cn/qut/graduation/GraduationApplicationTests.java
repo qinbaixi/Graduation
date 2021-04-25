@@ -1,10 +1,11 @@
 package cn.qut.graduation;
 
-import cn.qut.graduation.dao.HomeworkDao;
 import cn.qut.graduation.dao.StudentDao;
+import cn.qut.graduation.pojo.HCommit;
 import cn.qut.graduation.pojo.Homework;
+import cn.qut.graduation.pojo.IdExtension;
 import cn.qut.graduation.pojo.Student;
-import cn.qut.graduation.service.HCcommitService;
+import cn.qut.graduation.service.HCommitService;
 import cn.qut.graduation.service.HomeworkService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,8 @@ import java.util.List;
 class GraduationApplicationTests {
     @Autowired
     private StudentDao dao;
-
+    @Autowired
+    HCommitService hCommitService;
     @Autowired
     private HomeworkService homeworkService;
 
@@ -33,12 +35,14 @@ class GraduationApplicationTests {
         System.out.println(s);
 
     }
+
     @Test
     @Transactional
     void testDao1() {
         String strings = dao.queryPwdById(1);
         System.out.println(strings.toString());
     }
+
     @Test
     @Transactional
     void testDao2() {
@@ -47,5 +51,6 @@ class GraduationApplicationTests {
             System.out.println(hwList.get(i).toString());
         }
     }
+
 
 }
