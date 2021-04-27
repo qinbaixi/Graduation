@@ -8,4 +8,9 @@ public interface StudentService {
     List<Student> getAllStudents();
 
     Student getStuByIdAndPwd(Integer id);
+
+    List<Student> getAllStudentsandPwd();
+
+
+    boolean check(Integer sid, Integer pwd);
 }

@@ -8,4 +8,6 @@ import java.util.List;
 public interface HCommitService {
 
     List<HCommit> getAllById(Integer id);
+
+    List<HCommit> getAll();
 }
