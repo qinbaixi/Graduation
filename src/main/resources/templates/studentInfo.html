@@ -33,7 +33,7 @@
               <ul class="nav nav-subnav">
                 <li> <a href="http://localhost:9088/studentInfo">个人信息</a> </li>
                 <li> <a href="http://localhost:9088/homeworkList">作业列表</a> </li>
-                <li> <a href="http://localhost:9088/hcommit/1">已提交列表</a> </li>
+                <li> <a href="http://localhost:9088/hcommit">已提交列表</a> </li>
                 <li> <a href="lyear_pages_config.html">测试报告</a> </li>
               </ul>
             </li>
@@ -67,7 +67,7 @@
             <li class="dropdown dropdown-profile">
               <a href="javascript:void(0)" data-toggle="dropdown">
                 <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" alt="笔下光年" />
-                <span>笔下光年 <span class="caret"></span></span>
+                <span th:text="${su.name}">笔下光年 <span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li> <a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
@@ -219,7 +219,7 @@
         <div class="col-sm-6 col-lg-3">
           <div class="card">
             <div class="card-header bg-primary">
-              <h4 id="stuName"></h4>
+              <h4 id="stuName" th:text="${su.name}"></h4>
               <ul class="card-actions">
                 <li>
                   <button type="button"><i class="mdi mdi-more"></i></button>
@@ -227,13 +227,13 @@
               </ul>
             </div>
             <div class="card-body">
-           <!--   <p id="stuId" th:text="${stu.id}">1</p>
-              <p id="stuSid" th:text="${stu.sid}">1</p>
-              <p id="stuPwd" th:text="${stu.pwd}">1</p>-->
+              <p id="stuId" th:text="${su.id}">1</p>
+              <p id="stuSid" th:text="${su.sid}">1</p>
+              <p id="stuPwd" th:text="${su.pwd}">1</p>
 
-                 <p id="stuId" >1</p>
+                <!-- <p id="stuId" >1</p>
               <p id="stuSid" >1</p>
-              <p id="stuPwd" >1</p>
+              <p id="stuPwd" >1</p>-->
             </div>
           </div>
         </div>
@@ -255,14 +255,14 @@
 <script type="text/javascript" src="js/Chart.js"></script>
 <script type="text/javascript">
 $(document).ready(function(e) {
-      var rurl="http://localhost:9088/student/stuInfo/";
+   /*   var rurl="http://localhost:9088/student/stuInfo/";
     $.get("http://localhost:9088/student/stuInfo/1",function (data,status){
-   /*   $("p#stuName")=data.name;*/
+   /!*   $("p#stuName")=data.name;*!/
       $("#stuName").text(data.name);
       $("p#stuId").text("Id为"+data.id);
       $("p#stuSid").text("学号为"+data.sid);
       $("p#stuPwd").text("密码为"+data.pwd);
-    })
+    })*/
 });
 </script>
 </body>

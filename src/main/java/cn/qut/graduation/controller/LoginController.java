@@ -28,8 +28,10 @@ public class LoginController {
     }
 
 
-    @PostMapping()
-    public String verify(@RequestParam(name = "sid") Integer sid, @RequestParam(name = "pwd") Integer pwd, HttpServletRequest httpServletRequest) {
+    @PostMapping("suVerify")
+    public String verify(SuVo suVo, HttpServletRequest httpServletRequest) {
+        Integer sid = suVo.getSid();
+        Integer pwd = suVo.getPwd();
         boolean flag = this.studentService.check(sid, pwd);
         if (flag) {
             HttpSession session = httpServletRequest.getSession();
@@ -37,7 +39,7 @@ public class LoginController {
             suvo.setSid(sid);
             suvo.setPwd(pwd);
             session.setAttribute("suLogin",suvo);
-            return "index";
+            return "redirect:index";
         }
 
         return "error";

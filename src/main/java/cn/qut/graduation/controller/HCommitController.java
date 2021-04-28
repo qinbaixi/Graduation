@@ -22,7 +22,7 @@ public class HCommitController {
     @GetMapping("getById/{sid}")
     public ResponseEntity<List<HCommit>> getById(@PathVariable(name = "sid", required = false) Integer id) {
 
-        List<HCommit> hCommitList = hCommitService.getAllById(id);
+        List<HCommit> hCommitList = hCommitService.getAllBySid(id);
         return ResponseEntity.ok(hCommitList);
     }
 

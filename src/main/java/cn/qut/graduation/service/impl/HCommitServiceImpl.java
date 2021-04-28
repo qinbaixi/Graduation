@@ -16,8 +16,8 @@ public class HCommitServiceImpl implements HCommitService {
 
 
     @Override
-    public List<HCommit> getAllById(Integer id) {
-        return commitDao.getAllById(id);
+    public List<HCommit> getAllBySid(Integer id) {
+        return commitDao.getAllBySid(id);
     }
 
     @Override

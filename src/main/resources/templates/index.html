@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh"xmlns:th="http://www.thymeleaf.org" >
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -33,7 +33,7 @@
               <ul class="nav nav-subnav">
                 <li> <a href="http://localhost:9088/studentInfo">个人信息</a> </li>
                 <li> <a href="http://localhost:9088/homeworkList">作业列表</a> </li>
-                <li> <a href="http://localhost:9088/hcommit/1">已提交列表</a> </li>
+                <li> <a href="http://localhost:9088/hcommit">已提交列表</a> </li>
                 <li> <a href="lyear_pages_config.html">测试报告</a> </li>
               </ul>
             </li>
@@ -67,7 +67,7 @@
             <li class="dropdown dropdown-profile">
               <a href="javascript:void(0)" data-toggle="dropdown">
                 <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" alt="笔下光年" />
-                <span>笔下光年 <span class="caret"></span></span>
+                <span th:text="${suName}">笔下光年 <span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li> <a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>

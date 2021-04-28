@@ -13,4 +13,10 @@ public interface StudentService {
 
 
     boolean check(Integer sid, Integer pwd);
+
+    Student getStuBySid(Integer sid);
+
+    String getNameBySid(Integer sid);
+
+    Integer getIdBySid(Integer sid);
 }
