@@ -230,9 +230,9 @@
               <th scope="row" th:text="${hc.id.sid}">1</th>
               <td th:text="${hc.id.hid}">作业ID</td>
               <td th:text="${hc.title}">作业标题</td>
-              <td th:text="${hc.score}">暂时无成绩</td>
-              <td th:text="${hc.branch}">无提交记录</td>
-              <td th:text="${hc.radress}">暂无报告地址</td>
+              <td th:text="${hc.score}== null ?'暂无成绩' :${hc.score}">暂时无成绩</td>
+              <td th:text="${hc.branch} ==null? '未提交':${hc.branch}">无提交记录</td>
+              <td th:text="${hc.radress}==null? '暂无报告地址':${hc.radress}">暂无报告地址</td>
             </tr>
             </tbody>
           </table>
