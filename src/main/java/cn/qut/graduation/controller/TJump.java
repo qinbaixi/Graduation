@@ -1,10 +1,7 @@
 package cn.qut.graduation.controller;
 
 import cn.qut.graduation.annotation.LoginRequired;
-import cn.qut.graduation.pojo.HCommit;
-import cn.qut.graduation.pojo.Homework;
-import cn.qut.graduation.pojo.Student;
-import cn.qut.graduation.pojo.TeVo;
+import cn.qut.graduation.pojo.*;
 import cn.qut.graduation.service.HCommitService;
 import cn.qut.graduation.service.HomeworkService;
 import cn.qut.graduation.service.StudentService;
@@ -14,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -80,6 +78,15 @@ public class TJump {
         List<HCommit> hCommitList = this.hCommitService.getAll();
         model.addAttribute("hcList", hCommitList);
         return "ThcommitList";
+    }
+
+    @PostMapping("updateScore")
+    public String updateScore(@RequestParam(name = "score") Integer score, IdExtension idExtension) {
+        HCommit hCommit = new HCommit();
+        hCommit.setScore(score);
+        hCommit.setId( idExtension);
+        this.hCommitService.save(hCommit);
+        return "redirect:ThcommitList";
     }
 
 }

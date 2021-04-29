@@ -230,7 +230,7 @@
               <th scope="row" th:text="${hc.id.sid}">1</th>
               <td th:text="${hc.id.hid}">作业ID</td>
               <td th:text="${hc.title}">作业标题</td>
-              <td th:text="${hc.score}">暂时无成绩</td>
+              <td th:text="${hc.score} ==null ? '待评阅':${hc.score}">暂时无成绩</td>
               <td th:text="${hc.branch}">无提交记录</td>
               <td th:text="${hc.radress}">暂无报告地址</td>
               <td><button class="btn btn-yellow" data-toggle="modal" data-target="#myModal">打分</button></td>
@@ -243,11 +243,15 @@
                       <h4 class="modal-title" id="myModalLabel">请输入分数</h4>
                     </div>
                     <div class="modal-body">
-                      <input type="text" placeholder="分数" class=".input-sm" >
+                      <form action="/updateScore" method="post">
+                        <input type="hidden"  name="sid" th:value="${hc.id.sid}">
+                        <input type="hidden"  name="hid" th:value="${hc.id.hid}">
+                        <input type="text" placeholder="请输入评阅分数" name="score">
+                        <button type="submit" class="btn btn-primary">点击保存</button>
+                      </form>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                      <button type="button" class="btn btn-primary">点击保存</button>
                     </div>
                   </div>
                 </div>

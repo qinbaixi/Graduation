@@ -10,4 +10,6 @@ public interface HCommitService {
     List<HCommit> getAllBySid(Integer sid);
 
     List<HCommit> getAll();
+
+    void save(HCommit hCommit);
 }

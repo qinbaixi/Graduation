@@ -18,4 +18,5 @@ public interface HCommitDao extends JpaRepository<HCommit, IdExtension> {
     @Query(nativeQuery = true, value = "select * from hcommit where sid =?1")
     List<HCommit> getAllBySid(Integer sid);
 
+
 }
