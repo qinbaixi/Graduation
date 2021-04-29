@@ -66,14 +66,11 @@
             <li class="dropdown dropdown-profile">
               <a href="javascript:void(0)" data-toggle="dropdown">
                 <img class="img-avatar img-avatar-48 m-r-10" src="../images/users/avatar.jpg" alt="笔下光年" />
-                <span>笔下光年 <span class="caret"></span></span>
+                <span th:text="${teName}">笔下光年 <span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
-                <li> <a href="../lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
-                <li> <a href="../lyear_pages_edit_pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
-                <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
                 <li class="divider"></li>
-                <li> <a href="../lyear_pages_login.html"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+                <li> <a href="/tlogout"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
               </ul>
             </li>
             <!--切换主题配色-->
@@ -236,7 +233,25 @@
               <td th:text="${hc.score}">暂时无成绩</td>
               <td th:text="${hc.branch}">无提交记录</td>
               <td th:text="${hc.radress}">暂无报告地址</td>
-              <td>       <button>打分</button></td>
+              <td><button class="btn btn-yellow" data-toggle="modal" data-target="#myModal">打分</button></td>
+
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">请输入分数</h4>
+                    </div>
+                    <div class="modal-body">
+                      <input type="text" placeholder="分数" class=".input-sm" >
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                      <button type="button" class="btn btn-primary">点击保存</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </tr>
             </tbody>
           </table>

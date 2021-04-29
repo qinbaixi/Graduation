@@ -1,5 +1,6 @@
 package cn.qut.graduation.controller;
 
+import cn.qut.graduation.annotation.LoginRequired;
 import cn.qut.graduation.pojo.HCommit;
 import cn.qut.graduation.pojo.Homework;
 import cn.qut.graduation.pojo.Student;
@@ -32,6 +33,7 @@ public class Jump {
      * @return
      */
     @GetMapping("index")
+    @LoginRequired
     public String testIndex(Model model, HttpServletRequest httpServletRequest) {
         SuVo suLogin = (SuVo) httpServletRequest.getSession().getAttribute("suLogin");
         String name = this.studentService.getNameBySid(suLogin.getSid());
@@ -39,11 +41,17 @@ public class Jump {
         return "index";
     }
 
-
+    /**
+     * 学生详情
+     * @param httpServletRequest
+     * @param model
+     * @return
+     */
+    @LoginRequired
     @GetMapping("studentInfo")
     public String jumpStuInfo(HttpServletRequest httpServletRequest, Model model) {
         SuVo suLogin = (SuVo) httpServletRequest.getSession().getAttribute("suLogin");
-        System.out.println(suLogin.toString());
+//        System.out.println(suLogin.toString());
        Student student= this.studentService.getStuBySid(suLogin.getSid());
         model.addAttribute("su", student);
         return "studentInfo";
@@ -56,7 +64,11 @@ public class Jump {
      * @return
      */
     @GetMapping("homeworkList")
-    public String jumpToHomework(Model model) {
+    @LoginRequired
+    public String jumpToHomework(Model model,HttpServletRequest httpServletRequest) {
+        SuVo suLogin = (SuVo) httpServletRequest.getSession().getAttribute("suLogin");
+        String name = this.studentService.getNameBySid(suLogin.getSid());
+        model.addAttribute("suName", name);
         List<Homework> hwList = homeworkService.getHwList();
         model.addAttribute("hwList", hwList);
         return "homeworkList";
@@ -68,9 +80,10 @@ public class Jump {
      * @return
      */
     @GetMapping("hcommit")
+    @LoginRequired
     public String jumpToHcommit( HttpServletRequest httpServletRequest,Model model) {
         SuVo suLogin = (SuVo) httpServletRequest.getSession().getAttribute("suLogin");
-        System.out.println(suLogin.toString());
+//        System.out.println(suLogin.toString());
         Integer id = studentService.getIdBySid(suLogin.getSid());
         //获取提交列表
         List<HCommit> allBySid = this.hCommitService.getAllBySid(id);

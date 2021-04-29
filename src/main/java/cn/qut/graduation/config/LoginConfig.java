@@ -4,7 +4,9 @@ package cn.qut.graduation.config;
 import cn.qut.graduation.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -19,13 +21,15 @@ public class LoginConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-       // registry.addInterceptor(LoginInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("login").excludePathPatterns("tlogin").excludePathPatterns("/")
+                .excludePathPatterns("/css/**", "/fonts/**", "/images/**", "/js/**");
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("login");
     }
+
 
     @Bean
     public LoginInterceptor LoginInterceptor() {
