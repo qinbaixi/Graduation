@@ -69,20 +69,9 @@ public class Jump {
         Integer sid = suLogin.getSid();
         String name = this.studentService.getNameBySid(sid);
         model.addAttribute("suName", name);
-        List<Homework> hwList = homeworkService.getHwList();
-        //添加应提交分支名
-        List<HomeworkVo> hwListNew = new ArrayList<>(hwList.size());
-        for (int i = 0; i < hwList.size(); i++) {
-            HomeworkVo homeworkVo = new HomeworkVo();
 
-            BeanUtils.copyProperties(hwList.get(i), homeworkVo);
-            Integer commitBranch;
-            commitBranch =sid*10+hwList.get(i).getId();
-            homeworkVo.setCommitBranch(commitBranch);
-            hwListNew.add(homeworkVo);
-        }
-
-        model.addAttribute("hwList", hwListNew);
+        List<HomeworkVo> hwVoList = homeworkService.getHwVoList(sid);
+        model.addAttribute("hwList", hwVoList);
 
 
         return "homeworkList";
