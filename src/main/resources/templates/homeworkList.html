@@ -223,6 +223,7 @@
             <th>desc</th>
             <th>开始时间</th>
             <th>截止时间</th>
+            <th>需提交分支名</th>
           </tr>
           </thead>
           <tbody>
@@ -232,6 +233,7 @@
             <th scope="row" th:text="${homework.getDesc()}">3</th>
             <th scope="row" th:text="${homework.rltime}">3</th>
             <th scope="row" th:text="${homework.delineTime}">3</th>
+            <th scope="row" th:text="${homework.commitBranch}">3</th>
           </tr>
           </tbody>
         </table>

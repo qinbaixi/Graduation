@@ -24,4 +24,17 @@ public class HCommitController {
         return ResponseEntity.ok(hCommitList);
     }
 
+    /**
+     *更新hcommit表
+     * @param branch 学号加作业id 形如2017065261
+     * @param rpAddr 测试报告地址
+     * @return
+     */
+    @PostMapping("update")
+    public ResponseEntity<Boolean> updateBranchAndReport(@RequestParam(name = "branch")Integer branch,
+                                                         @RequestParam(name = "rpAddr") String rpAddr) {
+        Boolean flag = this.hCommitService.updateBranchAndReport(branch, rpAddr);
+        return ResponseEntity.ok(flag);
+    }
+
 }

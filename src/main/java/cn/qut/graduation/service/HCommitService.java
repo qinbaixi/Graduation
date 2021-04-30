@@ -12,4 +12,6 @@ public interface HCommitService {
     List<HCommit> getAll();
 
     void save(HCommit hCommit);
+
+    Boolean updateBranchAndReport(Integer branch, String rpAddr);
 }

@@ -1,18 +1,17 @@
 package cn.qut.graduation.controller;
 
 import cn.qut.graduation.annotation.LoginRequired;
-import cn.qut.graduation.pojo.HCommit;
-import cn.qut.graduation.pojo.Homework;
-import cn.qut.graduation.pojo.Student;
-import cn.qut.graduation.pojo.SuVo;
+import cn.qut.graduation.pojo.*;
 import cn.qut.graduation.service.HCommitService;
 import cn.qut.graduation.service.HomeworkService;
 import cn.qut.graduation.service.StudentService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -67,10 +66,25 @@ public class Jump {
     @LoginRequired
     public String jumpToHomework(Model model,HttpServletRequest httpServletRequest) {
         SuVo suLogin = (SuVo) httpServletRequest.getSession().getAttribute("suLogin");
-        String name = this.studentService.getNameBySid(suLogin.getSid());
+        Integer sid = suLogin.getSid();
+        String name = this.studentService.getNameBySid(sid);
         model.addAttribute("suName", name);
         List<Homework> hwList = homeworkService.getHwList();
-        model.addAttribute("hwList", hwList);
+        //添加应提交分支名
+        List<HomeworkVo> hwListNew = new ArrayList<>(hwList.size());
+        for (int i = 0; i < hwList.size(); i++) {
+            HomeworkVo homeworkVo = new HomeworkVo();
+
+            BeanUtils.copyProperties(hwList.get(i), homeworkVo);
+            Integer commitBranch;
+            commitBranch =sid*10+hwList.get(i).getId();
+            homeworkVo.setCommitBranch(commitBranch);
+            hwListNew.add(homeworkVo);
+        }
+
+        model.addAttribute("hwList", hwListNew);
+
+
         return "homeworkList";
     }
 

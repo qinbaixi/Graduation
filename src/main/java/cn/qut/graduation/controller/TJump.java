@@ -80,6 +80,12 @@ public class TJump {
         return "ThcommitList";
     }
 
+    /**
+     * 教师评分操作
+     * @param score
+     * @param idExtension
+     * @return
+     */
     @PostMapping("updateScore")
     public String updateScore(@RequestParam(name = "score") Integer score, IdExtension idExtension) {
         HCommit hCommit = new HCommit();
