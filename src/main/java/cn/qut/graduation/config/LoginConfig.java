@@ -21,7 +21,10 @@ public class LoginConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("login").excludePathPatterns("tlogin").excludePathPatterns("/")
+        registry.addInterceptor(LoginInterceptor())
+                .addPathPatterns("/**").excludePathPatterns("login").excludePathPatterns("tlogin")
+                .excludePathPatterns("/")
+                .excludePathPatterns("/hcommit/**")
                 .excludePathPatterns("/css/**", "/fonts/**", "/images/**", "/js/**");
     }
 

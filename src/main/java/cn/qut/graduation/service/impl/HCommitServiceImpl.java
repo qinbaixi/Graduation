@@ -46,8 +46,11 @@ public class HCommitServiceImpl implements HCommitService {
     @Override
     public Boolean updateBranchAndReport(Integer branch, String rpAddr) {
         IdExtension idExtension = new IdExtension();
-        Integer suId = studentDao.getIdBySid(branch / 10);
-
+        Integer sid = branch / 10;
+        Integer suId = studentDao.getIdBySid(sid);
+        if (suId == null) {
+            return false;
+        }
         idExtension.setSid(suId);
         idExtension.setHid(branch % 10);
 
